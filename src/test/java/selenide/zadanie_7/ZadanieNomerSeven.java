@@ -8,13 +8,15 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
-public class zadanieNomerSeven {
+public class ZadanieNomerSeven {
 
   @BeforeEach
   public void setUp(){
 
     Configuration.browserSize = "1920x1080";
+    Configuration.pageLoadTimeout = 800000;
     open("https://demoqa.com/automation-practice-form");
+
 
   }
 
