@@ -29,6 +29,7 @@ public class ZadanieNomerSeven {
     String mobPhone = "9056587887";
     String subject = "b";
     String adress = "Bruklin 89";
+    String a = "ff";
 
     $x("//input[@placeholder='First Name']").setValue(firstName);
     $x("//input[@placeholder='Last Name']").setValue(lastName);
