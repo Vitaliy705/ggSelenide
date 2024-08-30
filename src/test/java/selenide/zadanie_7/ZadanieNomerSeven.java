@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pages.PracticeFormPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
@@ -27,32 +28,33 @@ public class ZadanieNomerSeven {
     String lastName = "Coruzo";
     String email = "coruzo@gmail.com";
     String mobPhone = "9056587887";
-    String subject = "b";
-    String adress = "Bruklin 89";
+    String subject = "Biology";
+    String address = "Bruklin 89";
+    String gender = "Male";
     String a = "ff";
+    String hobby = "Sports";
+    String fileName = "Penguins.jpg";
+    String stateName = "NCR";
+    String cityName = "Delhi";
+    String year = "1999";
+    String month = "8";
+    String day = "029";
 
-    $x("//input[@placeholder='First Name']").setValue(firstName);
-    $x("//input[@placeholder='Last Name']").setValue(lastName);
-    $x("//input[@placeholder='name@example.com']").setValue(email);
-    $x("//label[@for='gender-radio-1']").click();
-    $x("//input[@placeholder='Mobile Number']").setValue(mobPhone);
-
-    $x("//input[@id='dateOfBirthInput']").click();
-    $x("//select[@class=\"react-datepicker__year-select\"]").click();
-    $x("//option[@value='1999']").click();
-    $x("//select[@class='react-datepicker__month-select']").click();
-    $x("//option[@value='8']").click();
-    $x("//div[@class='react-datepicker__day react-datepicker__day--023']").click();
-    $x("//input[@id='subjectsInput']").setValue(subject);
-    $x("//div[text()='Biology']").click();
-    $x("//label[text()='Sports']").click();
-    $x("//input[@type='file']").uploadFromClasspath("Penguins.jpg");
-    $x("//textarea[@placeholder='Current Address']").setValue(adress);
-    $x("//div[text()='Select State']").click();
-    $x("//div[text()='NCR']").click();
-    $x("//div[text()='Select City']").click();
-    $x("//div[text()='Delhi']").click();
-    $x("//button[@id='submit']").click();
+    PracticeFormPage practiceFormPage = new PracticeFormPage();
+    practiceFormPage
+            .setFirstName(firstName)
+            .setLastName(lastName)
+            .setEmail(email)
+            .setGender(gender)
+            .setMobilePhone(mobPhone)
+            .setSubject(subject)
+            .setHobby(hobby)
+            .setPicture(fileName)
+            .setAddress(address)
+            .setState(stateName)
+            .setCity(cityName)
+            .setDateOfBirth(year, month, day)
+            .btnSubmitClick();
 
     String extEmail = $x("//td[text()='Student Email']//following-sibling::td").getText();
 
