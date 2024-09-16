@@ -39,6 +39,7 @@ public class ZadanieNomerSeven {
     String year = "1999";
     String month = "8";
     String day = "029";
+    String titleModalText = "Thanks for submitting the form";
 
     PracticeFormPage practiceFormPage = new PracticeFormPage();
     practiceFormPage
@@ -54,10 +55,13 @@ public class ZadanieNomerSeven {
             .setState(stateName)
             .setCity(cityName)
             .setDateOfBirth(year, month, day)
-            .btnSubmitClick();
+            .btnSubmitClick()
+            .assertTitleModalForm(titleModalText)
+            .assertTableModalForm("Mobile", mobPhone)
+            .assertTableModalForm("Gender", gender)
+            .closeModalForm();
 
-    String extEmail = $x("//td[text()='Student Email']//following-sibling::td").getText();
-
-    Assertions.assertEquals(email, extEmail);
+    // String extEmail = $x("//td[text()='Student Email']//following-sibling::td").getText();
+    // Assertions.assertEquals(email, extEmail);
   }
 }
