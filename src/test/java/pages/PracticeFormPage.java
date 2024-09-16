@@ -2,12 +2,15 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ModalRegistrationForm;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 public class PracticeFormPage {
 
     CalendarComponent calendarComponent = new CalendarComponent();
+
+    ModalRegistrationForm modalRegistrationForm = new ModalRegistrationForm();
 
     private SelenideElement firstNameLocator = $x("//input[@placeholder='First Name']");
     private SelenideElement lastNameLocator = $x("//input[@placeholder='Last Name']");
@@ -94,6 +97,21 @@ public class PracticeFormPage {
         calendarComponent.setYear(year);
         calendarComponent.setMonth(month);
         calendarComponent.setDay(day);
+        return this;
+    }
+
+    public PracticeFormPage assertTitleModalForm(String titleModal){
+        modalRegistrationForm.assertTitle(titleModal);
+        return this;
+    }
+
+    public PracticeFormPage assertTableModalForm(String label, String values){
+        modalRegistrationForm.assertLabelAndValues(label, values);
+        return this;
+    }
+
+    public PracticeFormPage closeModalForm(){
+        modalRegistrationForm.closeModalForm();
         return this;
     }
 
